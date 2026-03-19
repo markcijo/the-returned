@@ -30,7 +30,7 @@ export default function WordStep({ onComplete }: WordStepProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex min-h-screen flex-col items-center justify-center px-6"
+      className="flex min-h-[100dvh] flex-col items-center justify-center px-6 py-12"
     >
       <motion.span
         initial={{ opacity: 0 }}
@@ -60,7 +60,7 @@ export default function WordStep({ onComplete }: WordStepProps) {
         whileTap={{ scale: 0.98 }}
         onClick={handleReturn}
         disabled={loading}
-        className="border-2 border-light px-16 py-6 font-cinzel text-2xl font-semibold tracking-[0.15em] text-light transition-all duration-300 hover:bg-light/10 disabled:opacity-50 md:text-3xl"
+        className="border-2 border-light px-10 py-5 font-cinzel text-xl font-semibold tracking-[0.15em] text-light transition-all duration-300 hover:bg-light/10 disabled:opacity-50 sm:px-16 sm:py-6 sm:text-2xl md:text-3xl"
       >
         I RETURN
       </motion.button>

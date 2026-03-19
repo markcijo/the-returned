@@ -24,10 +24,15 @@
   --font-cormorant: var(--font-cormorant);
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--void);
   color: var(--parchment);
   font-family: var(--font-cormorant), "Cormorant Garamond", serif;
+  overflow-x: hidden;
 }
 
 /* Selection */

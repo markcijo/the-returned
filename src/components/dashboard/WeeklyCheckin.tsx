@@ -53,7 +53,7 @@ export default function WeeklyCheckin() {
   }
 
   return (
-    <div className="border border-fog/30 bg-stone2 p-8">
+    <div className="border border-fog/30 bg-stone2 p-5 sm:p-8">
       <span className="mb-6 block font-cinzel text-[10px] uppercase tracking-[0.3em] text-parchment2">
         Weekly Check-In
       </span>
@@ -86,7 +86,7 @@ export default function WeeklyCheckin() {
         <button
           type="submit"
           disabled={loading || !drift.trim() || !returnText.trim()}
-          className="border border-ember/60 px-6 py-2 font-cinzel text-[10px] uppercase tracking-[0.25em] text-parchment2 transition-all hover:border-ember hover:text-parchment disabled:opacity-30"
+          className="min-h-[44px] border border-ember/60 px-6 py-2 font-cinzel text-[10px] uppercase tracking-[0.25em] text-parchment2 transition-all hover:border-ember hover:text-parchment disabled:opacity-30"
         >
           {loading ? "..." : "Submit"}
         </button>
@@ -96,7 +96,7 @@ export default function WeeklyCheckin() {
         <div className="mt-6">
           <button
             onClick={() => setShowHistory(!showHistory)}
-            className="font-cormorant text-sm font-normal italic text-parchment2 transition-colors hover:text-parchment"
+            className="min-h-[44px] py-2 font-cormorant text-sm font-normal italic text-parchment2 transition-colors hover:text-parchment"
           >
             {showHistory ? "Hide" : "Show"} previous ({history.length})
           </button>

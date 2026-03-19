@@ -13,7 +13,7 @@ export default function CrossingPage() {
   const [step, setStep] = useState<Step>("silence");
 
   return (
-    <div className="min-h-screen bg-void">
+    <div className="min-h-[100dvh] bg-void">
       <AnimatePresence mode="wait">
         {step === "silence" && (
           <SilenceStep key="silence" onComplete={() => setStep("water")} />

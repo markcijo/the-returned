@@ -61,7 +61,7 @@ export default function SevenWaysTracker() {
   });
 
   return (
-    <div className="border border-fog/30 bg-stone2 p-8">
+    <div className="border border-fog/30 bg-stone2 p-5 sm:p-8">
       <span className="mb-6 block font-cinzel text-[10px] uppercase tracking-[0.3em] text-parchment2">
         The Seven Ways
       </span>
@@ -82,7 +82,7 @@ export default function SevenWaysTracker() {
                     <button
                       key={r}
                       onClick={() => handleRate(pillar, r)}
-                      className={`h-6 w-6 text-xs transition-colors ${
+                      className={`h-8 w-8 text-xs transition-colors sm:h-6 sm:w-6 ${
                         r <= currentRating
                           ? "bg-light/80 text-void"
                           : "bg-fog/30 text-parchment2 hover:bg-fog/50"

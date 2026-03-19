@@ -75,7 +75,7 @@ export default function CirclePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="border border-fog/30 bg-stone2 p-8"
+              className="border border-fog/30 bg-stone2 p-5 sm:p-8"
             >
               <span className="mb-3 block font-cinzel text-[10px] font-normal tracking-[0.3em] text-ember">
                 {role.number}
@@ -182,7 +182,7 @@ export default function CirclePage() {
         >
           <a
             href="/crossing"
-            className="border border-light/60 px-8 py-3 font-cinzel text-[11px] font-semibold uppercase tracking-[0.25em] text-light transition-all duration-300 hover:border-light hover:bg-light/10"
+            className="inline-block min-h-[44px] border border-light/60 px-8 py-3 font-cinzel text-[11px] font-semibold uppercase tracking-[0.25em] text-light transition-all duration-300 hover:border-light hover:bg-light/10"
           >
             Begin The Crossing
           </a>

@@ -32,7 +32,7 @@ export default function ReadingProgress() {
   }
 
   return (
-    <div className="border border-fog/30 bg-stone2 p-8">
+    <div className="border border-fog/30 bg-stone2 p-5 sm:p-8">
       <span className="mb-6 block font-cinzel text-[10px] uppercase tracking-[0.3em] text-parchment2">
         Reading Progress
       </span>
@@ -46,14 +46,14 @@ export default function ReadingProgress() {
 
           return (
             <div key={book.id}>
-              <div className="mb-2 flex items-center justify-between">
+              <div className="mb-2 flex items-baseline justify-between gap-2">
                 <Link
                   href={`/books/${book.id}`}
-                  className="font-cinzel text-xs font-semibold tracking-[0.1em] text-parchment transition-colors hover:text-light"
+                  className="min-w-0 truncate font-cinzel text-xs font-semibold tracking-[0.1em] text-parchment transition-colors hover:text-light"
                 >
                   {book.title}
                 </Link>
-                <span className="font-cinzel text-[10px] tracking-[0.2em] text-parchment2">
+                <span className="shrink-0 font-cinzel text-[10px] tracking-[0.2em] text-parchment2">
                   {completed.length}/{book.totalChapters}
                 </span>
               </div>
@@ -67,7 +67,7 @@ export default function ReadingProgress() {
               </div>
 
               {/* Chapter dots */}
-              <div className="flex gap-1">
+              <div className="flex flex-wrap gap-1">
                 {Array.from({ length: book.totalChapters }, (_, i) => {
                   const ch = i + 1;
                   const isRead = completed.includes(ch);
@@ -75,7 +75,7 @@ export default function ReadingProgress() {
                     <Link
                       key={ch}
                       href={`/books/${book.id}#ch-${ch}`}
-                      className={`flex h-6 flex-1 items-center justify-center text-[9px] transition-colors ${
+                      className={`flex h-7 w-7 items-center justify-center text-[9px] transition-colors sm:h-6 sm:w-auto sm:flex-1 ${
                         isRead
                           ? "bg-light/20 text-light"
                           : "bg-fog/20 text-parchment2 hover:bg-fog/30"

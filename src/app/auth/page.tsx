@@ -86,7 +86,7 @@ function AuthForm() {
   return (
     <>
       <NavBar />
-      <section className="flex min-h-screen flex-col items-center justify-center px-6">
+      <section className="flex min-h-[100dvh] flex-col items-center justify-center px-4 py-20 sm:px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -152,7 +152,7 @@ function AuthForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full border border-light/60 py-3 font-cinzel text-[11px] font-semibold uppercase tracking-[0.25em] text-light transition-all duration-300 hover:border-light hover:bg-light/10 disabled:opacity-50"
+            className="w-full min-h-[44px] border border-light/60 py-3 font-cinzel text-[11px] font-semibold uppercase tracking-[0.25em] text-light transition-all duration-300 hover:border-light hover:bg-light/10 disabled:opacity-50"
           >
             {loading
               ? "..."
@@ -169,13 +169,13 @@ function AuthForm() {
             <>
               <button
                 onClick={() => setMode("magic")}
-                className="font-cormorant text-sm italic text-parchment2 transition-colors hover:text-parchment"
+                className="min-h-[44px] py-2 font-cormorant text-sm italic text-parchment2 transition-colors hover:text-parchment"
               >
                 Use magic link instead
               </button>
               <button
                 onClick={() => setMode("signup")}
-                className="font-cormorant text-sm italic text-parchment2 transition-colors hover:text-parchment"
+                className="min-h-[44px] py-2 font-cormorant text-sm italic text-parchment2 transition-colors hover:text-parchment"
               >
                 No account? Sign up
               </button>

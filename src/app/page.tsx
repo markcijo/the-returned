@@ -13,7 +13,7 @@ export default function Home() {
       <NavBar />
 
       {/* Hero */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-20">
+      <section className="relative flex min-h-[100dvh] flex-col items-center justify-center px-4 pt-20 sm:px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -62,17 +62,17 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 3.6 }}
-          className="mt-10 flex gap-6"
+          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:gap-6"
         >
           <Link
             href="/crossing"
-            className="border border-light/60 px-8 py-3 font-cinzel text-[11px] font-semibold uppercase tracking-[0.25em] text-light transition-all duration-300 hover:border-light hover:bg-light/10"
+            className="min-h-[44px] border border-light/60 px-8 py-3 text-center font-cinzel text-[11px] font-semibold uppercase tracking-[0.25em] text-light transition-all duration-300 hover:border-light hover:bg-light/10"
           >
             Begin The Crossing
           </Link>
           <Link
             href="/manifesto"
-            className="px-8 py-3 font-cinzel text-[11px] font-normal uppercase tracking-[0.25em] text-parchment2 transition-colors duration-300 hover:text-parchment"
+            className="min-h-[44px] px-8 py-3 text-center font-cinzel text-[11px] font-normal uppercase tracking-[0.25em] text-parchment2 transition-colors duration-300 hover:text-parchment"
           >
             Read the Manifesto
           </Link>

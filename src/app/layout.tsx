@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cinzel.variable} ${cormorant.variable}`}>
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-[100dvh] antialiased">{children}</body>
     </html>
   );
 }

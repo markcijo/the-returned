@@ -27,7 +27,7 @@ export default function BooksPage() {
   return (
     <>
       <NavBar />
-      <section className="flex min-h-screen flex-col items-center justify-center px-6 pt-20">
+      <section className="flex min-h-[100dvh] flex-col items-center justify-center px-4 pt-20 pb-12 sm:px-6">
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -55,7 +55,7 @@ export default function BooksPage() {
             >
               <Link
                 href={`/books/${book.id}`}
-                className="group block border border-fog/30 bg-stone2 p-10 transition-all duration-300 hover:border-ember/60"
+                className="group block border border-fog/30 bg-stone2 p-6 transition-all duration-300 hover:border-ember/60 sm:p-10"
               >
                 <span className="mb-2 block font-cinzel text-[9px] font-normal uppercase tracking-[0.4em] text-ember">
                   {book.subtitle}

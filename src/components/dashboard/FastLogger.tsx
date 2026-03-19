@@ -57,7 +57,7 @@ export default function FastLogger() {
   }
 
   return (
-    <div className="border border-fog/30 bg-stone2 p-8">
+    <div className="border border-fog/30 bg-stone2 p-5 sm:p-8">
       <span className="mb-6 block font-cinzel text-[10px] uppercase tracking-[0.3em] text-parchment2">
         The Three Fasts
       </span>

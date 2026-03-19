@@ -24,7 +24,7 @@ export default async function DashboardPage() {
   return (
     <>
       <NavBar />
-      <div className="mx-auto max-w-4xl px-6 pt-24 pb-32">
+      <div className="mx-auto max-w-4xl px-4 pt-24 pb-32 sm:px-6">
         <MemberHeader
           email={user.email ?? "Returned"}
           crossingDate={crossing?.crossed_at ?? null}

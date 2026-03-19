@@ -15,7 +15,7 @@ export default function WaterStep({ onComplete }: WaterStepProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex min-h-screen flex-col items-center justify-center px-6"
+      className="flex min-h-[100dvh] flex-col items-center justify-center px-6 py-12"
     >
       <motion.span
         initial={{ opacity: 0 }}
@@ -63,7 +63,7 @@ export default function WaterStep({ onComplete }: WaterStepProps) {
         <button
           onClick={onComplete}
           disabled={text.trim().length === 0}
-          className="mt-6 w-full border border-ember/60 py-3 font-cinzel text-[11px] font-normal uppercase tracking-[0.25em] text-parchment2 transition-all duration-300 hover:border-ember hover:text-parchment disabled:opacity-30 disabled:hover:border-ember/60 disabled:hover:text-parchment2"
+          className="mt-6 w-full min-h-[44px] border border-ember/60 py-3 font-cinzel text-[11px] font-normal uppercase tracking-[0.25em] text-parchment2 transition-all duration-300 hover:border-ember hover:text-parchment disabled:opacity-30 disabled:hover:border-ember/60 disabled:hover:text-parchment2"
         >
           Release and Continue
         </button>

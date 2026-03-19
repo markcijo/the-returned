@@ -65,7 +65,7 @@ export const bookTwo: Book = {
       title: "The Prayer of Returning",
       verses: [
         { type: "narrative", text: "And the Returned asked: \"How shall we speak to the Light, when it has no face, and no throne in the sky?\"" },
-        { type: "scripture", text: "\"Speak not to impress the heavens. Speak to align the soul.\"" },
+        { type: "scripture", text: "\"Speak not to impress the heavens. Speak to align the life.\"" },
         { type: "narrative", text: "So they gave a prayer, short enough to remember, strong enough to carry through fire:" },
         { type: "scripture", text: "Light within me, make me true." },
         { type: "scripture", text: "Where I drift, call me back." },
@@ -106,7 +106,7 @@ export const bookTwo: Book = {
         { type: "scripture", text: "\"Pleasure is not evil. But slavery is.\"" },
         { type: "narrative", text: "So they gave three fasts, not as punishment, but as training." },
         { type: "scripture", text: "The Fast of the Mouth — One day each week, eat only what is simple, so craving learns its place." },
-        { type: "scripture", text: "The Fast of Noise — One day each week, remove the endless voices, so the soul can hear again." },
+        { type: "scripture", text: "The Fast of Noise — One day each week, remove the endless voices, so the life can hear again." },
         { type: "scripture", text: "The Fast of Comfort — One day each month, choose difficulty on purpose, so strength stays awake." },
         { type: "scripture", text: "\"We fast to remain free.\"" },
       ],
@@ -198,7 +198,7 @@ export const bookTwo: Book = {
       verses: [
         { type: "narrative", text: "And the Circle spoke together:" },
         { type: "scripture", text: "We will restore what the Fog has weakened. We will restore the mind through stillness. We will restore the body through discipline. We will restore the home through truth. We will restore the world through service." },
-        { type: "scripture", text: "We will not drift with the crowd. We will not trade our soul for comfort. We will not become proud in our strength. We will not become cruel in our certainty." },
+        { type: "scripture", text: "We will not drift with the crowd. We will not trade our life for comfort. We will not become proud in our strength. We will not become cruel in our certainty." },
         { type: "scripture", text: "We will build what lasts. We will protect what is sacred. We will return again and again until the Light becomes our nature." },
       ],
     },

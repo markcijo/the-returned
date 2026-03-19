@@ -26,10 +26,12 @@ export default function MemberHeader({
     : null;
 
   return (
-    <div className="flex items-center gap-6 border-b border-fog/30 pb-8">
-      <Mark size={48} />
-      <div>
-        <p className="font-cinzel text-lg font-semibold tracking-[0.1em] text-parchment">
+    <div className="flex items-center gap-4 border-b border-fog/30 pb-8 sm:gap-6">
+      <div className="shrink-0">
+        <Mark size={48} />
+      </div>
+      <div className="min-w-0">
+        <p className="truncate font-cinzel text-sm font-semibold tracking-[0.1em] text-parchment sm:text-lg">
           {email}
         </p>
         {formattedDate && (

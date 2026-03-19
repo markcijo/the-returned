@@ -34,7 +34,7 @@ export default function SilenceStep({ onComplete }: SilenceStepProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex min-h-screen flex-col items-center justify-center px-6"
+      className="flex min-h-[100dvh] flex-col items-center justify-center px-6 py-12"
     >
       <motion.span
         initial={{ opacity: 0 }}
@@ -71,7 +71,7 @@ export default function SilenceStep({ onComplete }: SilenceStepProps) {
             exit={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
             onClick={onComplete}
-            className="mt-16 font-cinzel text-[10px] uppercase tracking-[0.3em] text-parchment2 transition-colors hover:text-parchment"
+            className="mt-16 min-h-[44px] px-6 py-3 font-cinzel text-[10px] uppercase tracking-[0.3em] text-parchment2 transition-colors hover:text-parchment"
           >
             Continue
           </motion.button>
