@@ -1,43 +1,34 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 export default function AmbientAudio() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [ready, setReady] = useState(false);
 
-  useEffect(() => {
-    const audio = new Audio("/audio/crossing-ambient.mp3");
-    audio.loop = true;
-    audio.volume = 0;
-    audioRef.current = audio;
+  const fadeIn = useCallback(
+    (audio: HTMLAudioElement, target: number, duration: number) => {
+      audio.volume = 0;
+      const steps = 30;
+      const stepTime = duration / steps;
+      const stepSize = target / steps;
+      let current = 0;
 
-    return () => {
-      audio.pause();
-      audio.src = "";
-    };
-  }, []);
+      const interval = setInterval(() => {
+        current += stepSize;
+        if (current >= target) {
+          audio.volume = target;
+          clearInterval(interval);
+        } else {
+          audio.volume = current;
+        }
+      }, stepTime);
+    },
+    []
+  );
 
-  function fadeIn(audio: HTMLAudioElement, target: number, duration: number) {
-    const steps = 30;
-    const stepTime = duration / steps;
-    const stepSize = target / steps;
-    let current = 0;
-
-    const interval = setInterval(() => {
-      current += stepSize;
-      if (current >= target) {
-        audio.volume = target;
-        clearInterval(interval);
-      } else {
-        audio.volume = current;
-      }
-    }, stepTime);
-
-    return interval;
-  }
-
-  function fadeOut(audio: HTMLAudioElement, duration: number) {
+  const fadeOut = useCallback((audio: HTMLAudioElement, duration: number) => {
     const steps = 20;
     const stepTime = duration / steps;
     const startVol = audio.volume;
@@ -54,9 +45,39 @@ export default function AmbientAudio() {
         audio.volume = current;
       }
     }, stepTime);
+  }, []);
 
-    return interval;
-  }
+  // Auto-play on mount — this works because the user clicked "Begin" first
+  useEffect(() => {
+    const audio = new Audio("/audio/crossing-ambient.mp3");
+    audio.loop = true;
+    audio.volume = 0;
+    audio.preload = "auto";
+    audioRef.current = audio;
+
+    audio.addEventListener("canplaythrough", () => {
+      setReady(true);
+    });
+
+    // Attempt autoplay
+    const playPromise = audio.play();
+    if (playPromise) {
+      playPromise
+        .then(() => {
+          fadeIn(audio, 0.25, 3000);
+          setPlaying(true);
+        })
+        .catch(() => {
+          // Autoplay blocked — user will need to click the button
+          setReady(true);
+        });
+    }
+
+    return () => {
+      audio.pause();
+      audio.src = "";
+    };
+  }, [fadeIn]);
 
   function handleToggle() {
     const audio = audioRef.current;
@@ -66,9 +87,10 @@ export default function AmbientAudio() {
       fadeOut(audio, 1500);
       setPlaying(false);
     } else {
-      audio.play();
-      fadeIn(audio, 0.25, 3000);
-      setPlaying(true);
+      audio.play().then(() => {
+        fadeIn(audio, 0.25, 3000);
+        setPlaying(true);
+      });
     }
   }
 
