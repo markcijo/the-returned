@@ -7,9 +7,17 @@ interface SilenceStepProps {
   onComplete: () => void;
 }
 
+const PROMPTS = [
+  "Be still.",
+  "Face what you have been avoiding.",
+  "Name the drift you have been hiding from.",
+  "Let the noise fall away.",
+  "What remains when the distractions stop?",
+];
+
 export default function SilenceStep({ onComplete }: SilenceStepProps) {
   const [seconds, setSeconds] = useState(60);
-  const [canSkip, setCanSkip] = useState(false);
+  const [promptIndex, setPromptIndex] = useState(0);
 
   useEffect(() => {
     if (seconds <= 0) {
@@ -18,13 +26,16 @@ export default function SilenceStep({ onComplete }: SilenceStepProps) {
     }
 
     const timer = setTimeout(() => setSeconds((s) => s - 1), 1000);
-
-    if (seconds <= 30) {
-      setCanSkip(true);
-    }
-
     return () => clearTimeout(timer);
   }, [seconds, onComplete]);
+
+  // Rotate prompts every 12 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPromptIndex((i) => (i + 1) % PROMPTS.length);
+    }, 12000);
+    return () => clearInterval(interval);
+  }, []);
 
   const minutes = Math.floor(seconds / 60);
   const secs = seconds % 60;
@@ -45,14 +56,18 @@ export default function SilenceStep({ onComplete }: SilenceStepProps) {
         Step One — Silence
       </motion.span>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 1 }}
-        className="mb-16 max-w-md text-center font-cormorant text-xl font-normal italic leading-relaxed text-parchment"
-      >
-        Be still. Face what you have been avoiding.
-      </motion.p>
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={promptIndex}
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -5 }}
+          transition={{ duration: 1.5 }}
+          className="mb-16 max-w-md text-center font-cormorant text-xl font-normal italic leading-relaxed text-parchment"
+        >
+          {PROMPTS[promptIndex]}
+        </motion.p>
+      </AnimatePresence>
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -63,20 +78,45 @@ export default function SilenceStep({ onComplete }: SilenceStepProps) {
         {minutes}:{secs.toString().padStart(2, "0")}
       </motion.div>
 
-      <AnimatePresence>
-        {canSkip && (
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
-            onClick={onComplete}
-            className="mt-16 min-h-[44px] px-6 py-3 font-cinzel text-[10px] uppercase tracking-[0.3em] text-parchment2 transition-colors hover:text-parchment"
-          >
-            Continue
-          </motion.button>
-        )}
-      </AnimatePresence>
+      {/* Progress ring */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2 }}
+        className="mt-8"
+      >
+        <svg width="48" height="48" viewBox="0 0 48 48">
+          <circle
+            cx="24"
+            cy="24"
+            r="20"
+            fill="none"
+            stroke="var(--fog)"
+            strokeWidth="1"
+          />
+          <circle
+            cx="24"
+            cy="24"
+            r="20"
+            fill="none"
+            stroke="var(--ember)"
+            strokeWidth="1"
+            strokeDasharray={`${2 * Math.PI * 20}`}
+            strokeDashoffset={`${2 * Math.PI * 20 * (seconds / 60)}`}
+            transform="rotate(-90 24 24)"
+            style={{ transition: "stroke-dashoffset 1s linear" }}
+          />
+        </svg>
+      </motion.div>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+        transition={{ duration: 2, delay: 4 }}
+        className="mt-12 max-w-xs text-center font-cormorant text-sm font-normal italic text-parchment2"
+      >
+        There is no shortcut. The silence is the work.
+      </motion.p>
     </motion.div>
   );
 }

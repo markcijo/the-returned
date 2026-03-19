@@ -18,6 +18,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://the-returned.vercel.app"),
   title: "The Returned — Return to Clarity, Discipline, and Purpose",
   description:
     "A covenant community for builders and thinkers who have drifted. Return to what matters.",

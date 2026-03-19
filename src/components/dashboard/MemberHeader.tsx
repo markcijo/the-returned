@@ -26,25 +26,52 @@ export default function MemberHeader({
     : null;
 
   return (
-    <div className="flex items-center gap-4 border-b border-fog/30 pb-8 sm:gap-6">
-      <div className="shrink-0">
-        <Mark size={48} />
-      </div>
-      <div className="min-w-0">
-        <p className="truncate font-cinzel text-sm font-semibold tracking-[0.1em] text-parchment sm:text-lg">
-          {email}
-        </p>
-        {formattedDate && (
-          <p className="mt-1 font-cormorant text-sm font-normal italic text-parchment2">
-            Returned since {formattedDate}
+    <div className="border-b border-fog/30 pb-8">
+      <div className="flex items-center gap-4 sm:gap-6">
+        <div className="shrink-0">
+          <Mark size={48} />
+        </div>
+        <div className="min-w-0">
+          <p className="truncate font-cinzel text-sm font-semibold tracking-[0.1em] text-parchment sm:text-lg">
+            {email}
           </p>
-        )}
-        {daysSinceCrossing != null && (
-          <p className="mt-1 font-cinzel text-[10px] uppercase tracking-[0.3em] text-ember">
-            Day {daysSinceCrossing} of Returning
-          </p>
-        )}
+          {formattedDate && (
+            <p className="mt-1 font-cormorant text-sm font-normal italic text-parchment2">
+              Returned since {formattedDate}
+            </p>
+          )}
+        </div>
       </div>
+
+      {/* Journey stats */}
+      {daysSinceCrossing != null && (
+        <div className="mt-6 grid grid-cols-3 gap-4">
+          <div className="border border-fog/20 bg-stone2 px-4 py-5 text-center">
+            <p className="font-cinzel text-2xl font-semibold text-light sm:text-3xl">
+              {daysSinceCrossing}
+            </p>
+            <p className="mt-1 font-cinzel text-[8px] uppercase tracking-[0.3em] text-parchment2">
+              Days Returned
+            </p>
+          </div>
+          <div className="border border-fog/20 bg-stone2 px-4 py-5 text-center">
+            <p className="font-cinzel text-2xl font-semibold text-parchment sm:text-3xl">
+              {Math.floor(daysSinceCrossing / 7)}
+            </p>
+            <p className="mt-1 font-cinzel text-[8px] uppercase tracking-[0.3em] text-parchment2">
+              Weeks
+            </p>
+          </div>
+          <div className="border border-fog/20 bg-stone2 px-4 py-5 text-center">
+            <p className="font-cinzel text-2xl font-semibold text-parchment sm:text-3xl">
+              {daysSinceCrossing >= 7 ? "🔥" : "—"}
+            </p>
+            <p className="mt-1 font-cinzel text-[8px] uppercase tracking-[0.3em] text-parchment2">
+              {daysSinceCrossing >= 7 ? "On Fire" : "Building"}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

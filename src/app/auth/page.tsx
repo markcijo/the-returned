@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { createSupabaseBrowser } from "@/lib/db/supabase-client";
 import NavBar from "@/components/ui/NavBar";
 import Mark from "@/components/ui/Mark";
+import Footer from "@/components/ui/Footer";
 
 type Mode = "signin" | "signup" | "magic";
 
@@ -243,6 +244,8 @@ function AuthForm() {
           )}
         </div>
       </section>
+
+      <Footer />
     </>
   );
 }

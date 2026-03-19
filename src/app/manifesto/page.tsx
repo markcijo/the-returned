@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import NavBar from "@/components/ui/NavBar";
 import PageHero from "@/components/ui/PageHero";
 import CovenantBlock from "@/components/ui/CovenantBlock";
+import Footer from "@/components/ui/Footer";
+import PageTransition from "@/components/ui/PageTransition";
 
 const sections = [
   {
@@ -46,105 +48,109 @@ export default function ManifestoPage() {
     <>
       <NavBar />
 
-      <PageHero
-        eyebrow="The Manifesto"
-        title="Why We Return"
-        subtitle="A declaration for those who have felt the fog and chosen to burn through it."
-      />
+      <PageTransition>
+        <PageHero
+          eyebrow="The Manifesto"
+          title="Why We Return"
+          subtitle="A declaration for those who have felt the fog and chosen to burn through it."
+        />
 
-      {/* Sections */}
-      {sections.map((section, i) => (
-        <section key={section.label} className="px-6 py-20">
-          <div className="mx-auto max-w-2xl">
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="mb-8 block font-cinzel text-[9px] font-normal uppercase tracking-[0.4em] text-parchment2"
-            >
-              {section.label}
-            </motion.span>
+        {/* Sections */}
+        {sections.map((section, i) => (
+          <section key={section.label} className="px-6 py-20">
+            <div className="mx-auto max-w-2xl">
+              <motion.span
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="mb-8 block font-cinzel text-[9px] font-normal uppercase tracking-[0.4em] text-parchment2"
+              >
+                {section.label}
+              </motion.span>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="mb-10 font-cinzel text-3xl font-semibold text-parchment md:text-4xl"
-            >
-              {section.title}
-            </motion.h2>
+              <motion.h2
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="mb-10 font-cinzel text-3xl font-semibold text-parchment md:text-4xl"
+              >
+                {section.title}
+              </motion.h2>
 
-            <div className="space-y-6">
-              {section.paragraphs.map((p, j) => (
-                <motion.p
-                  key={j}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: j * 0.1 }}
-                  className="font-cormorant text-lg font-normal italic leading-[1.9] text-parchment"
-                >
-                  {p}
-                </motion.p>
-              ))}
+              <div className="space-y-6">
+                {section.paragraphs.map((p, j) => (
+                  <motion.p
+                    key={j}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: j * 0.1 }}
+                    className="font-cormorant text-lg font-normal italic leading-[1.9] text-parchment"
+                  >
+                    {p}
+                  </motion.p>
+                ))}
+              </div>
+
+              <motion.blockquote
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="mt-12 border-l-2 border-ember pl-6"
+              >
+                <p className="font-cormorant text-xl font-semibold leading-relaxed text-parchment">
+                  {section.quote}
+                </p>
+              </motion.blockquote>
             </div>
 
-            <motion.blockquote
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-12 border-l-2 border-ember pl-6"
-            >
-              <p className="font-cormorant text-xl font-semibold leading-relaxed text-parchment">
-                {section.quote}
-              </p>
-            </motion.blockquote>
-          </div>
+            {/* Divider between sections */}
+            {i < sections.length - 1 && (
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                className="mx-auto mt-20 h-px w-16 bg-fog"
+              />
+            )}
+          </section>
+        ))}
 
-          {/* Divider between sections */}
-          {i < sections.length - 1 && (
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              className="mx-auto mt-20 h-px w-16 bg-fog"
-            />
-          )}
-        </section>
-      ))}
+        {/* Covenant Block */}
+        <CovenantBlock />
 
-      {/* Covenant Block */}
-      <CovenantBlock />
-
-      {/* Closing */}
-      <section className="px-6 py-24 text-center">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mx-auto max-w-xl font-cormorant text-xl font-normal italic leading-relaxed text-parchment"
-        >
-          The Circle waits. Not with open arms — with open eyes.
-          <br />
-          If you are ready, begin The Crossing.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-10"
-        >
-          <a
-            href="/crossing"
-            className="inline-block min-h-[44px] border border-light/60 px-8 py-3 font-cinzel text-[11px] font-semibold uppercase tracking-[0.25em] text-light transition-all duration-300 hover:border-light hover:bg-light/10"
+        {/* Closing */}
+        <section className="px-6 py-24 text-center">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-xl font-cormorant text-xl font-normal italic leading-relaxed text-parchment"
           >
-            Begin The Crossing
-          </a>
-        </motion.div>
-      </section>
+            The Circle waits. Not with open arms — with open eyes.
+            <br />
+            If you are ready, begin The Crossing.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-10"
+          >
+            <a
+              href="/crossing"
+              className="inline-block min-h-[44px] border border-light/60 px-8 py-3 font-cinzel text-[11px] font-semibold uppercase tracking-[0.25em] text-light transition-all duration-300 hover:border-light hover:bg-light/10"
+            >
+              Begin The Crossing
+            </a>
+          </motion.div>
+        </section>
+
+        <Footer />
+      </PageTransition>
     </>
   );
 }

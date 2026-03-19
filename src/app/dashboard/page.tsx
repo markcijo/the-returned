@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { createSupabaseServer } from "@/lib/db/supabase-server";
 import { getCrossing } from "@/lib/db/queries";
 import NavBar from "@/components/ui/NavBar";
+import PageTransition from "@/components/ui/PageTransition";
 import MemberHeader from "@/components/dashboard/MemberHeader";
 import WeeklyCheckin from "@/components/dashboard/WeeklyCheckin";
 import NightWatch from "@/components/dashboard/NightWatch";
@@ -24,22 +25,24 @@ export default async function DashboardPage() {
   return (
     <>
       <NavBar />
-      <div className="mx-auto max-w-4xl px-4 pt-24 pb-32 sm:px-6">
-        <MemberHeader
-          email={user.email ?? "Returned"}
-          crossingDate={crossing?.crossed_at ?? null}
-        />
+      <PageTransition>
+        <div className="mx-auto max-w-4xl px-4 pt-24 pb-32 sm:px-6">
+          <MemberHeader
+            email={user.email ?? "Returned"}
+            crossingDate={crossing?.crossed_at ?? null}
+          />
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-2">
-          <WeeklyCheckin />
-          <NightWatch />
-          <SevenWaysTracker />
-          <FastLogger />
-          <div className="lg:col-span-2">
-            <ReadingProgress />
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            <WeeklyCheckin />
+            <NightWatch />
+            <SevenWaysTracker />
+            <FastLogger />
+            <div className="lg:col-span-2">
+              <ReadingProgress />
+            </div>
           </div>
         </div>
-      </div>
+      </PageTransition>
     </>
   );
 }
