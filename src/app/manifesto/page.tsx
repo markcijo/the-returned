@@ -11,7 +11,7 @@ const sections = [
     title: "You Have Been Drifting",
     paragraphs: [
       "There is a fog that settles over a life. It does not arrive with violence — it arrives with comfort. It arrives with distraction, with ease, with the slow replacement of fire by routine.",
-      "You did not choose it. No one does. The Fog is not a punishment — it is the default. It is what happens when purpose is not actively tended, when discipline gives way to convenience, when the sharp edges of a man are smoothed into compliance.",
+      "You did not choose it. No one does. The Fog is not a punishment — it is the default. It is what happens when purpose is not actively tended, when discipline gives way to convenience, when the sharp edges of a person are smoothed into compliance.",
       "You have felt it. The strange emptiness after achievement. The restlessness that no vacation cures. The nagging sense that the life you are living is not the life you were built for.",
       "That feeling is not weakness. It is the signal. It is the ancient part of you that remembers what it was made to do.",
     ],
@@ -35,7 +35,7 @@ const sections = [
       "Returning is not a one-time event. It is not a conversion, a breakthrough, or a peak experience. It is a daily practice — the deliberate choice to turn toward clarity when every instinct says to stay comfortable.",
       "The Returned are not perfect. They are not enlightened. They are builders and thinkers who have made a simple covenant: when they drift, they return. When the fog settles, they light it on fire.",
       "This is not self-improvement. Self-improvement assumes you are broken. You are not broken. You are asleep. And The Crossing is how you wake up.",
-      "We do not return alone. The Circle holds us — not with comfort, but with accountability. Not with encouragement, but with truth. A brother who lets you drift is no brother at all.",
+      "We do not return alone. The Circle holds us — not with comfort, but with accountability. Not with encouragement, but with truth. One who lets you drift is no companion at all.",
     ],
     quote: "You were not made for comfort. You were made for something that matters.",
   },
