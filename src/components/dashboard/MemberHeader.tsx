@@ -63,11 +63,11 @@ export default function MemberHeader({
             </p>
           </div>
           <div className="border border-fog/20 bg-stone2 px-4 py-5 text-center">
-            <p className="font-cinzel text-2xl font-semibold text-parchment sm:text-3xl">
-              {daysSinceCrossing >= 7 ? "🔥" : "—"}
+            <p className="font-cinzel text-2xl font-semibold text-light sm:text-3xl">
+              {daysSinceCrossing >= 7 ? "Lit" : "—"}
             </p>
             <p className="mt-1 font-cinzel text-[8px] uppercase tracking-[0.3em] text-parchment2">
-              {daysSinceCrossing >= 7 ? "On Fire" : "Building"}
+              {daysSinceCrossing >= 7 ? "The Light Holds" : "Kindling"}
             </p>
           </div>
         </div>
