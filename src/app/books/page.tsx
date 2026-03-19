@@ -63,7 +63,7 @@ export default function BooksPage() {
                 <h2 className="mb-4 font-cinzel text-xl font-semibold text-parchment transition-colors duration-300 group-hover:text-light">
                   {book.title}
                 </h2>
-                <p className="mb-6 font-cormorant text-base font-light italic leading-relaxed text-parchment2">
+                <p className="mb-6 font-cormorant text-base font-normal italic leading-relaxed text-parchment">
                   {book.description}
                 </p>
                 <span className="font-cinzel text-[10px] font-normal uppercase tracking-[0.3em] text-parchment2">

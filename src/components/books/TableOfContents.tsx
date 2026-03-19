@@ -31,7 +31,7 @@ export default function TableOfContents({
               className={`block w-full text-left font-cormorant text-sm transition-colors duration-200 ${
                 activeChapterId === chapter.id
                   ? "font-semibold text-light"
-                  : "font-light text-parchment2 hover:text-parchment"
+                  : "font-normal text-parchment2 hover:text-parchment"
               }`}
             >
               <span className="mr-2 font-cinzel text-[10px] tracking-[0.2em] text-ember">

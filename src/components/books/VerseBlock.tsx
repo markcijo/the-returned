@@ -14,7 +14,7 @@ export default function VerseBlock({ verse }: VerseBlockProps) {
   }
 
   return (
-    <p className="my-4 font-cormorant text-lg font-light italic leading-[1.9] text-parchment2 md:text-xl">
+    <p className="my-4 font-cormorant text-lg font-normal italic leading-[1.9] text-parchment md:text-xl">
       {verse.text}
     </p>
   );

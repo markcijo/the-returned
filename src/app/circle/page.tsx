@@ -83,7 +83,7 @@ export default function CirclePage() {
               <h3 className="mb-3 font-cinzel text-sm font-semibold tracking-[0.1em] text-parchment">
                 {role.name}
               </h3>
-              <p className="font-cormorant text-base font-light italic leading-relaxed text-parchment2">
+              <p className="font-cormorant text-base font-normal italic leading-relaxed text-parchment">
                 {role.description}
               </p>
             </motion.div>
@@ -107,7 +107,7 @@ export default function CirclePage() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-6 font-cormorant text-xl font-light italic leading-relaxed text-parchment2"
+            className="mb-6 font-cormorant text-xl font-normal italic leading-relaxed text-parchment"
           >
             Once each week, the Circle gathers. Not for performance — for
             reckoning.
@@ -123,7 +123,7 @@ export default function CirclePage() {
               <p className="font-cormorant text-2xl font-semibold leading-relaxed text-parchment">
                 &ldquo;Where did you drift?&rdquo;
               </p>
-              <p className="mt-2 font-cormorant text-base font-light italic text-parchment2">
+              <p className="mt-2 font-cormorant text-base font-normal italic text-parchment2">
                 Each answers without excuses.
               </p>
             </motion.div>
@@ -144,7 +144,7 @@ export default function CirclePage() {
               <p className="font-cormorant text-2xl font-semibold leading-relaxed text-parchment">
                 &ldquo;Where did you return?&rdquo;
               </p>
-              <p className="mt-2 font-cormorant text-base font-light italic text-parchment2">
+              <p className="mt-2 font-cormorant text-base font-normal italic text-parchment2">
                 Each answers without pride.
               </p>
             </motion.div>
@@ -170,7 +170,7 @@ export default function CirclePage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mb-10 font-cormorant text-xl font-light italic text-parchment2"
+          className="mb-10 font-cormorant text-xl font-normal italic text-parchment"
         >
           The Circle waits. Begin with The Crossing.
         </motion.p>

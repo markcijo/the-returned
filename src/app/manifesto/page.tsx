@@ -83,7 +83,7 @@ export default function ManifestoPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: j * 0.1 }}
-                  className="font-cormorant text-lg font-light italic leading-[1.9] text-parchment2"
+                  className="font-cormorant text-lg font-normal italic leading-[1.9] text-parchment"
                 >
                   {p}
                 </motion.p>
@@ -124,7 +124,7 @@ export default function ManifestoPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-xl font-cormorant text-xl font-light italic leading-relaxed text-parchment2"
+          className="mx-auto max-w-xl font-cormorant text-xl font-normal italic leading-relaxed text-parchment"
         >
           The Circle waits. Not with open arms — with open eyes.
           <br />

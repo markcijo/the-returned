@@ -45,8 +45,11 @@ CINZEL USAGE:
   - Labels: 400 weight, ALL CAPS, letter-spacing 0.25–0.4em, 8–11px
 
 CORMORANT USAGE:
-  - Body prose: 300 weight, italic — className="font-cormorant italic font-light"
-  - Scripture/covenant: 600 weight — className="font-cormorant font-semibold"
+  - Body prose: 400 weight italic, color var(--parchment) — className="font-cormorant italic"
+  - Pull quotes (32px+): 300 weight italic permitted at large display sizes only
+  - Scripture/covenant: 600 weight, color var(--parchment) — className="font-cormorant font-semibold"
+  ❌ NEVER font-light (300) for body text — illegible on dark backgrounds
+  ❌ NEVER var(--parchment2) for prose — use for labels/captions only
 ```
 
 ---

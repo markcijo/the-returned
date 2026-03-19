@@ -63,7 +63,8 @@ The Returned is a digital home for a covenant community built around the philoso
 |-----|------|--------|-------|
 | Display / Heroes | Cinzel | 600 | Hero H1, major headings |
 | Section labels | Cinzel | 400 | 8–11px, letter-spacing 0.25–0.4em, ALL CAPS |
-| Body prose | Cormorant Garamond | 300 italic | All narrative, scripture, covenant text |
+| Body prose | Cormorant Garamond | 400 italic | color: var(--parchment). Never 300 at reading sizes. |
+| Pull quotes (32px+) | Cormorant Garamond | 300 italic | Large display only — color: var(--parchment) |
 | Scripture / covenant lines | Cormorant Garamond | 600 | Bold verse, vows, key declarations |
 
 ## Design Rules (NEVER violate)
