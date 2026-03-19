@@ -2,120 +2,73 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Generates subtle ambient texture using Web Audio API.
- * Filtered white noise (like distant wind) + a low sine drone.
- * No external files needed.
- */
 export default function AmbientAudio() {
-  const ctxRef = useRef<AudioContext | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
-  const [userInteracted, setUserInteracted] = useState(false);
 
-  function startAudio() {
-    if (ctxRef.current) return;
-
-    const ctx = new AudioContext();
-    ctxRef.current = ctx;
-
-    // Master gain — very quiet
-    const master = ctx.createGain();
-    master.gain.value = 0;
-    master.connect(ctx.destination);
-
-    // Fade in over 4 seconds
-    master.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 4);
-
-    // Layer 1: Filtered noise (wind texture)
-    const bufferSize = 2 * ctx.sampleRate;
-    const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-    const output = noiseBuffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) {
-      output[i] = Math.random() * 2 - 1;
-    }
-
-    const noise = ctx.createBufferSource();
-    noise.buffer = noiseBuffer;
-    noise.loop = true;
-
-    // Bandpass filter — makes it sound like wind
-    const windFilter = ctx.createBiquadFilter();
-    windFilter.type = "bandpass";
-    windFilter.frequency.value = 300;
-    windFilter.Q.value = 0.5;
-
-    const noiseGain = ctx.createGain();
-    noiseGain.gain.value = 0.6;
-
-    noise.connect(windFilter);
-    windFilter.connect(noiseGain);
-    noiseGain.connect(master);
-    noise.start();
-
-    // Layer 2: Very low sine drone (barely audible foundation)
-    const drone = ctx.createOscillator();
-    drone.type = "sine";
-    drone.frequency.value = 60;
-
-    const droneGain = ctx.createGain();
-    droneGain.gain.value = 0.15;
-
-    drone.connect(droneGain);
-    droneGain.connect(master);
-    drone.start();
-
-    // Layer 3: Occasional high harmonic (like distant water trickle)
-    const shimmer = ctx.createOscillator();
-    shimmer.type = "sine";
-    shimmer.frequency.value = 1200;
-
-    const shimmerGain = ctx.createGain();
-    shimmerGain.gain.value = 0.02;
-
-    // Slow LFO modulating shimmer volume
-    const lfo = ctx.createOscillator();
-    lfo.type = "sine";
-    lfo.frequency.value = 0.08; // Very slow
-    const lfoGain = ctx.createGain();
-    lfoGain.gain.value = 0.02;
-    lfo.connect(lfoGain);
-    lfoGain.connect(shimmerGain.gain);
-    lfo.start();
-
-    shimmer.connect(shimmerGain);
-    shimmerGain.connect(master);
-    shimmer.start();
-
-    setPlaying(true);
-  }
-
-  function stopAudio() {
-    if (!ctxRef.current) return;
-    const ctx = ctxRef.current;
-
-    // Fade out over 2 seconds
-    const master = ctx.destination;
-    ctx.close();
-    ctxRef.current = null;
-    setPlaying(false);
-  }
-
-  // Cleanup on unmount
   useEffect(() => {
+    const audio = new Audio("/audio/crossing-ambient.mp3");
+    audio.loop = true;
+    audio.volume = 0;
+    audioRef.current = audio;
+
     return () => {
-      if (ctxRef.current) {
-        ctxRef.current.close();
-        ctxRef.current = null;
-      }
+      audio.pause();
+      audio.src = "";
     };
   }, []);
 
+  function fadeIn(audio: HTMLAudioElement, target: number, duration: number) {
+    const steps = 30;
+    const stepTime = duration / steps;
+    const stepSize = target / steps;
+    let current = 0;
+
+    const interval = setInterval(() => {
+      current += stepSize;
+      if (current >= target) {
+        audio.volume = target;
+        clearInterval(interval);
+      } else {
+        audio.volume = current;
+      }
+    }, stepTime);
+
+    return interval;
+  }
+
+  function fadeOut(audio: HTMLAudioElement, duration: number) {
+    const steps = 20;
+    const stepTime = duration / steps;
+    const startVol = audio.volume;
+    const stepSize = startVol / steps;
+    let current = startVol;
+
+    const interval = setInterval(() => {
+      current -= stepSize;
+      if (current <= 0) {
+        audio.volume = 0;
+        audio.pause();
+        clearInterval(interval);
+      } else {
+        audio.volume = current;
+      }
+    }, stepTime);
+
+    return interval;
+  }
+
   function handleToggle() {
-    setUserInteracted(true);
+    const audio = audioRef.current;
+    if (!audio) return;
+
     if (playing) {
-      stopAudio();
+      fadeOut(audio, 1500);
+      setPlaying(false);
     } else {
-      startAudio();
+      audio.play();
+      fadeIn(audio, 0.25, 3000);
+      setPlaying(true);
     }
   }
 
