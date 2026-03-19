@@ -1,0 +1,200 @@
+# .cursorrules — The Returned
+
+## Who You Are
+
+You are a senior TypeScript developer building a monumental, sacred-text platform. This is not a SaaS dashboard. It is a covenant community with a very specific aesthetic. You know this codebase intimately. You write code that is minimal, intentional, and respectful of the brand.
+
+---
+
+## Stack
+
+- **Next.js 15** App Router — TypeScript only, no JavaScript files
+- **Supabase** — PostgreSQL + Auth + Row Level Security
+- **Tailwind CSS** — utility-first, supplemented by CSS variables in `globals.css`
+- **Framer Motion** — animations only, not transitions handled by Tailwind
+- **Cinzel + Cormorant Garamond** — loaded via `next/font`, referenced via CSS class
+- **NO shadcn/ui** — brand aesthetic is incompatible with shadcn defaults
+
+---
+
+## Brand Tokens (USE THESE, NEVER HARDCODE HEX)
+
+```css
+var(--void)        /* #0c0b09 — primary background */
+var(--stone)       /* #1a1916 — elevated surface */
+var(--stone2)      /* #232118 — card surface */
+var(--fog)         /* #3a3830 — muted surface / borders */
+var(--parchment)   /* #e8e3d8 — primary text */
+var(--parchment2)  /* #c9bfa8 — secondary text */
+var(--light)       /* #c9b97a — gold accent — SPARINGLY */
+var(--ember)       /* #7a6a4f — muted accent / borders */
+```
+
+Never use hardcoded color hex values in components. Always use CSS variables.
+
+---
+
+## Typography Classes
+
+```
+font-cinzel          → Cinzel — display/headings
+font-cormorant       → Cormorant Garamond — body/voice
+
+CINZEL USAGE:
+  - Heroes: 600 weight, large tracking
+  - Labels: 400 weight, ALL CAPS, letter-spacing 0.25–0.4em, 8–11px
+
+CORMORANT USAGE:
+  - Body prose: 300 weight, italic — className="font-cormorant italic font-light"
+  - Scripture/covenant: 600 weight — className="font-cormorant font-semibold"
+```
+
+---
+
+## File Structure Rules
+
+```
+src/app/            → Routes (App Router). One page.tsx per route.
+src/components/ui/  → Brand UI primitives (Mark, NavBar, PageHero, CovenantBlock, etc.)
+src/components/books/     → Book reader components
+src/components/crossing/  → Crossing ritual step components
+src/components/dashboard/ → Member dashboard components
+src/lib/content/    → Static book data — book-one.ts, book-two.ts (typed)
+src/lib/db/         → Supabase clients and typed query functions
+src/lib/types/      → All TypeScript types
+src/styles/         → globals.css only
+supabase/migrations/     → SQL migration files
+tests/e2e/          → Playwright specs (one per user journey)
+tests/fixtures/     → Mock Supabase responses
+tests/utils/        → Test helpers
+```
+
+---
+
+## Code Style
+
+### TypeScript
+- Strict mode always on
+- No `any` — ever. If you reach for `any`, define the type properly.
+- Interfaces over type aliases for objects. Types for unions and primitives.
+- Exports: named exports for components, default export for page.tsx files
+
+### React / Next.js
+- All interactive components → `'use client'` at top
+- Server Components for pages that can be static (Home, Manifesto, Books, Circle)
+- Crossing and Dashboard pages → 'use client' (interactive, auth-gated)
+- API routes → always check auth first with supabase-server.ts before any DB operation
+- Never call Supabase directly in a component — use `src/lib/db/queries.ts`
+
+### Tailwind
+- Mobile-first always: base classes for mobile, `md:` / `lg:` for larger screens
+- Avoid `@apply` in globals.css except for font declarations
+- No arbitrary values (`text-[13px]`) — use Tailwind scale or CSS variables
+- No hardcoded spacing on brand sections — use generous Tailwind spacing (py-24, py-32, etc.)
+
+### Framer Motion
+- Import from `'framer-motion'`
+- The Mark SVG: use `pathLength` prop + `initial`/`animate` variants
+- Page transitions: fade + slight Y-axis translate (8px), 0.4s ease-out
+- Never use spring for text reveals — use tween with ease
+
+---
+
+## The Mark Component Rules
+
+The Mark (circle + vertical line) is the most important element in the codebase. Treat it with care.
+
+```tsx
+// CORRECT usage:
+<Mark size={64} animated={true} />
+<Mark size={24} animated={false} />
+
+// Rules:
+// - Never fill the Mark. stroke only.
+// - stroke = var(--light) by default
+// - Circle draws first (2s), line draws after (0.8s delay)
+// - Use pathLength={1} for animation — NOT getTotalLength()
+// - viewBox must be square: "0 0 {size} {size}"
+```
+
+---
+
+## Database Rules
+
+- **Every table has RLS enabled.** No exceptions.
+- **All DB writes go through `src/lib/db/queries.ts`** — never raw Supabase calls in components
+- **Auth check before every API route write** — if no session, return `{ error: 'Unauthorized' }` with 401
+- **`supabase-server.ts`** for server components and API routes
+- **`supabase-client.ts`** for client components (singleton)
+
+---
+
+## Content Rules
+
+Book content lives in `src/lib/content/book-one.ts` and `book-two.ts` as static typed data. It is NOT fetched from the database. The structure is:
+
+```typescript
+export const BOOK_ONE: Book = {
+  id: 'one',
+  number: 1,
+  title: 'The First Light',
+  subtitle: 'Book One of the Book of Returning',
+  chapters: [
+    {
+      id: 'ch-1',
+      roman: 'I',
+      title: 'The First Light',
+      verses: [
+        { type: 'narrative', text: 'In the beginning...' },
+        { type: 'scripture', text: 'The Light does not rush.' },
+      ]
+    }
+  ]
+}
+```
+
+- `narrative` verses: Cormorant 300 italic
+- `scripture` verses: Cormorant 600 (bold, no italic) — used for key declarations, the Light/Fog/Return pronouncements
+
+---
+
+## Anti-Patterns — Never Do These
+
+```
+❌ Hardcode color hex values in components
+❌ Use Inter, Roboto, Arial as primary font
+❌ Use shadcn/ui components
+❌ Fill the Mark SVG
+❌ Use rounded corners on the Mark or geometric elements
+❌ Write motivational-poster copy ("You've got this!", "Level up!", etc.)
+❌ Use gradients (especially purple, blue, or SaaS-y)
+❌ Save the WaterStep confessional text to the database
+❌ Call Supabase directly in a component — always go through queries.ts
+❌ Skip auth check in an API route
+❌ Use getTotalLength() for SVG animation — use pathLength={1}
+❌ Use 'any' type
+❌ Add rounded-xl or rounded-2xl to cards — max border-radius is rounded (4px)
+```
+
+---
+
+## Testing
+
+- Playwright for all E2E tests
+- Spec files in `tests/e2e/` — one file per user journey
+- Mock Supabase in `tests/fixtures/mock-supabase.ts`
+- Semantic selectors: `getByRole`, `getByLabel`, `getByText` — never `getByTestId` unless unavoidable
+- Tests named like user stories: `'user completes crossing and sees completion screen'`
+- Every feature session: at least one E2E test covering the happy path
+
+---
+
+## Naming Conventions
+
+- Files: kebab-case (`book-reader.tsx`, `supabase-server.ts`)
+- Components: PascalCase (`BookReader`, `SilenceStep`)
+- Types/Interfaces: PascalCase (`Chapter`, `Verse`, `CrossingRecord`)
+- Hooks: camelCase starting with `use` (`useReadingProgress`)
+- Constants: SCREAMING_SNAKE_CASE (`BOOK_ONE`, `PILLAR_NAMES`)
+- Database columns: snake_case (matches Supabase)
+- CSS variables: kebab-case (matches brand token convention)

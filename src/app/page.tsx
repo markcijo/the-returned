@@ -1,65 +1,120 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import Mark from "@/components/ui/Mark";
+import NavBar from "@/components/ui/NavBar";
+import PillarStrip from "@/components/ui/PillarStrip";
+import GreetingCard from "@/components/ui/GreetingCard";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <NavBar />
+
+      {/* Hero */}
+      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-20">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          <Mark size={120} animated strokeWidth={1.2} />
+        </motion.div>
+
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.8 }}
+          className="mt-10 font-cinzel text-[10px] font-normal uppercase tracking-[0.4em] text-parchment2"
+        >
+          A Covenant Community
+        </motion.span>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 2.2 }}
+          className="mt-6 text-center font-cinzel text-5xl font-semibold leading-tight text-parchment md:text-7xl"
+        >
+          The Returned
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 2.8 }}
+          className="mt-8 max-w-lg text-center font-cormorant text-xl font-light italic leading-relaxed text-parchment2 md:text-2xl"
+        >
+          For builders and thinkers who have drifted.
+          <br />
+          This is the way back.
+        </motion.p>
+
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.2, delay: 3.2 }}
+          className="mt-10 h-px w-24 bg-ember"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 3.6 }}
+          className="mt-10 flex gap-6"
+        >
+          <Link
+            href="/crossing"
+            className="border border-light/60 px-8 py-3 font-cinzel text-[11px] font-semibold uppercase tracking-[0.25em] text-light transition-all duration-300 hover:border-light hover:bg-light/10"
+          >
+            Begin The Crossing
+          </Link>
+          <Link
+            href="/manifesto"
+            className="px-8 py-3 font-cinzel text-[11px] font-normal uppercase tracking-[0.25em] text-parchment2 transition-colors duration-300 hover:text-parchment"
+          >
+            Read the Manifesto
+          </Link>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1, delay: 4.2 }}
+          className="absolute bottom-10"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="h-8 w-px bg-parchment2"
+          />
+        </motion.div>
+      </section>
+
+      {/* Pillar Strip */}
+      <PillarStrip />
+
+      {/* Pull Quote */}
+      <section className="px-6 py-28">
+        <motion.blockquote
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="mx-auto max-w-2xl text-center"
+        >
+          <p className="font-cormorant text-2xl font-light italic leading-relaxed text-parchment2 md:text-3xl">
+            &ldquo;Do not seek a life without pain.
+            <br />
+            Seek a life without Drift.&rdquo;
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        </motion.blockquote>
+      </section>
+
+      {/* Greeting Card */}
+      <GreetingCard />
+    </>
   );
 }
