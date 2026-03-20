@@ -100,6 +100,12 @@ export default function FastLogger() {
       <p className="mt-4 font-cormorant text-sm font-normal italic text-parchment2">
         &ldquo;We fast to remain free.&rdquo;
       </p>
+
+      <p className="mt-3 font-cormorant text-xs font-normal text-fog">
+        Fasting is a voluntary spiritual practice. If you have a history of
+        disordered eating or any health concerns, please consult a healthcare
+        professional before participating.
+      </p>
     </div>
   );
 }

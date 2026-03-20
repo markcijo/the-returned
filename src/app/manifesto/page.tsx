@@ -36,8 +36,8 @@ const sections = [
     paragraphs: [
       "Returning is not a one-time event. It is not a conversion, a breakthrough, or a peak experience. It is a daily practice — the deliberate choice to turn toward clarity when every instinct says to stay comfortable.",
       "The Returned are not perfect. They are not enlightened. They are builders and thinkers who have made a simple covenant: when they drift, they return. When the fog settles, they light it on fire.",
-      "This is not self-improvement. Self-improvement assumes you are broken. You are not broken. You are asleep. And The Crossing is how you wake up.",
-      "We do not return alone. The Circle holds us — not with comfort, but with accountability. Not with encouragement, but with truth. One who lets you drift is no companion at all.",
+      "This is not self-improvement. Self-improvement assumes you are broken. You are not broken. You may simply be asleep. And The Crossing is one way to wake up.",
+      "We do not return alone. The Circle holds us — not with comfort, but with accountability. Not with encouragement, but with truth. A true companion will not let you drift unchallenged.",
     ],
     quote: "You were not made for comfort. You were made for something that matters.",
   },

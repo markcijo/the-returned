@@ -109,6 +109,7 @@ export const bookTwo: Book = {
         { type: "scripture", text: "The Fast of Noise — One day each week, remove the endless voices, so the life can hear again." },
         { type: "scripture", text: "The Fast of Comfort — One day each month, choose difficulty on purpose, so strength stays awake." },
         { type: "scripture", text: "\"We fast to remain free.\"" },
+        { type: "narrative", text: "Yet the elders warned: fasting is not deprivation. It is not punishment worn as virtue. Those who have struggled with food or body must honour their own path. Seek counsel where needed. The Light does not ask you to harm yourself in its name." },
       ],
     },
     {
@@ -217,8 +218,8 @@ export const bookTwo: Book = {
       roman: "XV",
       title: "The Marriage Covenant",
       verses: [
-        { type: "narrative", text: "And they said:" },
-        { type: "scripture", text: "Do not enter marriage seeking to be served. Enter prepared to build." },
+        { type: "narrative", text: "And they said, to all who choose to build a life with another:" },
+        { type: "scripture", text: "Whatever form your partnership takes — do not enter it seeking to be served. Enter prepared to build." },
         { type: "scripture", text: "Speak truth quickly. Keep your word. Guard the bond. Do not use love as a weapon. Return before the night ends." },
         { type: "scripture", text: "\"Two who return together become unbreakable.\"" },
       ],

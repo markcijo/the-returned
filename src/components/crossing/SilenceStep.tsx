@@ -115,8 +115,20 @@ export default function SilenceStep({ onComplete }: SilenceStepProps) {
         transition={{ duration: 2, delay: 4 }}
         className="mt-12 max-w-xs text-center font-cormorant text-sm font-normal italic text-parchment2"
       >
-        There is no shortcut. The silence is the work.
+        Stay with it. The silence is the work.
       </motion.p>
+
+      {/* Graceful exit for anyone in distress */}
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.25 }}
+        transition={{ duration: 1, delay: 8 }}
+        whileHover={{ opacity: 0.7 }}
+        onClick={onComplete}
+        className="mt-6 min-h-[44px] px-4 py-2 font-cormorant text-xs font-normal italic text-fog transition-colors hover:text-parchment2"
+      >
+        I need to step away
+      </motion.button>
     </motion.div>
   );
 }
