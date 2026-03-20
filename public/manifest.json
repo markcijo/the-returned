@@ -1,0 +1,12 @@
+{
+  "name": "The Returned",
+  "short_name": "Returned",
+  "description": "A covenant community for builders and thinkers who have drifted.",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#0c0b09",
+  "theme_color": "#0c0b09",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

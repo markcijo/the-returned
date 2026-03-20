@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   title: "The Returned — Return to Clarity, Discipline, and Purpose",
   description:
     "A covenant community for builders and thinkers who have drifted. Return to what matters.",
+  manifest: "/manifest.json",
   openGraph: {
     title: "The Returned",
     description:

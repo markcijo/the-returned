@@ -8,6 +8,7 @@ import NavBar from "@/components/ui/NavBar";
 import PillarStrip from "@/components/ui/PillarStrip";
 import GreetingCard from "@/components/ui/GreetingCard";
 import WaitlistCapture from "@/components/ui/WaitlistCapture";
+import CrossingCounter from "@/components/ui/CrossingCounter";
 import Footer from "@/components/ui/Footer";
 import PageTransition from "@/components/ui/PageTransition";
 
@@ -110,6 +111,9 @@ export default function Home() {
             />
           </motion.div>
         </section>
+
+        {/* Crossing Counter */}
+        <CrossingCounter />
 
         {/* Pillar Strip */}
         <PillarStrip />

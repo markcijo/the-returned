@@ -5,7 +5,7 @@ const publicPages = [
   { path: "/manifesto", title: "Why We Return" },
   { path: "/books", title: "The Sacred Texts" },
   { path: "/circle", title: "Not Alone" },
-  { path: "/crossing", title: "Step One" },
+  { path: "/crossing", title: "Before You Begin" },
   { path: "/auth", title: "Welcome Back" },
 ];
 

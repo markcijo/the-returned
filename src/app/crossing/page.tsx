@@ -67,14 +67,14 @@ export default function CrossingPage() {
 
               <div className="space-y-4 py-4">
                 <div className="flex items-start gap-4 text-left">
-                  <span className="mt-1 font-cinzel text-[10px] tracking-[0.3em] text-ember">
+                  <span className="mt-1 font-cinzel text-[11px] font-semibold tracking-[0.3em] text-parchment2">
                     I
                   </span>
                   <div>
                     <p className="font-cinzel text-xs font-semibold tracking-[0.1em] text-parchment">
                       Silence
                     </p>
-                    <p className="mt-1 font-cormorant text-sm font-normal italic text-parchment2">
+                    <p className="mt-1 font-cormorant text-sm font-normal italic text-parchment">
                       60 seconds of stillness. Face what you have been avoiding.
                     </p>
                   </div>
@@ -83,14 +83,14 @@ export default function CrossingPage() {
                 <div className="h-px w-full bg-fog/20" />
 
                 <div className="flex items-start gap-4 text-left">
-                  <span className="mt-1 font-cinzel text-[10px] tracking-[0.3em] text-ember">
+                  <span className="mt-1 font-cinzel text-[11px] font-semibold tracking-[0.3em] text-parchment2">
                     II
                   </span>
                   <div>
                     <p className="font-cinzel text-xs font-semibold tracking-[0.1em] text-parchment">
                       Water
                     </p>
-                    <p className="mt-1 font-cormorant text-sm font-normal italic text-parchment2">
+                    <p className="mt-1 font-cormorant text-sm font-normal italic text-parchment">
                       Name what you must release. This is private — it will not
                       be saved.
                     </p>
@@ -100,21 +100,21 @@ export default function CrossingPage() {
                 <div className="h-px w-full bg-fog/20" />
 
                 <div className="flex items-start gap-4 text-left">
-                  <span className="mt-1 font-cinzel text-[10px] tracking-[0.3em] text-ember">
+                  <span className="mt-1 font-cinzel text-[11px] font-semibold tracking-[0.3em] text-parchment2">
                     III
                   </span>
                   <div>
                     <p className="font-cinzel text-xs font-semibold tracking-[0.1em] text-parchment">
                       Word
                     </p>
-                    <p className="mt-1 font-cormorant text-sm font-normal italic text-parchment2">
+                    <p className="mt-1 font-cormorant text-sm font-normal italic text-parchment">
                       Speak your vow. When you are ready, press I RETURN.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <p className="font-cormorant text-sm font-normal italic text-parchment2">
+              <p className="font-cormorant text-sm font-normal italic text-parchment">
                 Find a quiet place. This is between you and the version of
                 yourself that has been waiting.
               </p>
