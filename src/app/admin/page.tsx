@@ -30,8 +30,8 @@ export default function AdminPage() {
   useEffect(() => {
     fetch("/api/admin/stats")
       .then((res) => {
-        if (res.status === 403) {
-          router.push("/");
+        if (res.status === 403 || res.status === 401) {
+          router.push("/auth?redirect=/admin");
           return null;
         }
         return res.json();
@@ -43,6 +43,7 @@ export default function AdminPage() {
         setLoading(false);
       })
       .catch(() => {
+        router.push("/auth?redirect=/admin");
         setLoading(false);
       });
   }, [router]);
