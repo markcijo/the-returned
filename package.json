@@ -10,7 +10,9 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "test:audit": "node scripts/audit.mjs"
+    "test:audit": "node scripts/audit.mjs",
+    "test:migrations": "node scripts/check-migrations.mjs",
+    "predeploy": "npm run test:run && npm run test:audit && npm run test:migrations"
   },
   "dependencies": {
     "@supabase/ssr": "^0.9.0",
